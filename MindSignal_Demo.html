@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MindSignal – Explainable Adolescent Depression Screening</title>
+<style>
+:root{--bg:#eef2f9;--card:#fff;--tx:#0f1b33;--mu:#55627a;--ac:#1d4ed8;--ac2:#0e7490;--bd:#d9e1ee;--g:#059669;--y:#d97706;--o:#ea580c;--r:#dc2626;--hl:#fde68a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1621;--card:#16212f;--tx:#e8edf3;--mu:#97a4b5;--ac:#6fa8dc;--bd:#263445;--hl:#4a3f17}}
+:root[data-theme="dark"]{--bg:#0e1621;--card:#16212f;--tx:#e8edf3;--mu:#97a4b5;--ac:#6fa8dc;--bd:#263445;--hl:#4a3f17}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:920px;margin:0 auto;padding:20px 16px 48px}
+.hero{background:linear-gradient(135deg,#0f2a5f 0%,#1d4ed8 55%,#0e7490 100%);border-radius:18px;padding:28px 24px;margin-bottom:16px;box-shadow:0 10px 30px rgba(29,78,216,.25)}
+.hero h1,.hero .tag{color:#fff}.hero .tag{opacity:.85;font-size:.85rem;margin:0}.hero .sub{color:#dbeafe;margin:0}
+h1{font-size:2rem;margin:.2em 0}h2{margin:1.6em 0 .5em;font-size:1.3rem;color:var(--ac)}
+.sub{color:var(--mu);max-width:640px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 2px 10px rgba(15,27,51,.06)}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1 1 200px}
+.stat{box-shadow:inset 0 4px 0 var(--ac2),0 2px 10px rgba(15,27,51,.06)}.stat b{display:block;font-size:1.7rem;color:var(--ac);line-height:1.2}.stat span{display:block;font-weight:600;font-size:.92rem;margin-top:2px}.stat small{display:block;color:var(--mu);font-size:.8rem;line-height:1.4;margin-top:6px}
+textarea{width:100%;min-height:110px;padding:12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;resize:vertical}
+button{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0;border-radius:10px;padding:10px 16px;font:inherit;cursor:pointer;margin:6px 6px 0 0}
+button.alt{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+mark{background:var(--hl);color:inherit;border-radius:4px;padding:0 3px}
+.badge{display:inline-block;padding:4px 14px;border-radius:99px;color:#fff;font-weight:600}
+.bar{height:10px;background:var(--bd);border-radius:6px;overflow:hidden;margin:4px 0 10px}.bar i{display:block;height:100%;background:var(--ac)}
+.cue{display:flex;justify-content:space-between;font-size:.9rem;color:var(--mu)}
+.alert{display:none;background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5;border-radius:10px;padding:12px;margin-top:10px}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{padding:8px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}
+.note{font-size:.85rem;color:var(--mu)}
+.steps{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.steps div{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;font-size:.9rem}
+</style></head><body><main>
+<div class="hero"><p class="tag">Presented By: Komal Kumari · Marwadi University · IBM SkillsBuild </p>
+<h1>🧠 MindSignal</h1>
+<p class="sub">Explainable depression screening for adolescents from social-media text, using MentalBERT + LIWC psycholinguistic fusion. A screening aid for counselors, not a diagnosis.</p></div>
+<div class="row">
+<div class="card stat"><b>82.18%</b><span>Accuracy</span><small>Correct predictions on 3,687 held-out test posts.</small></div>
+<div class="card stat"><b>0.9137</b><span>AUC-ROC</span><small>Separates depressed from non-depressed posts across all decision thresholds.</small></div>
+<div class="card stat"><b>0.8218</b><span>Macro F1-score</span><small>Balanced precision and recall on both classes. Cohen's kappa 0.644.</small></div>
+<div class="card stat"><b>0.8181 ± 0.0057</b><span>5-fold cross-validation F1</span><small>Consistent results across all five folds, so it isn't a lucky split.</small></div>
+<div class="card stat"><b>24,574</b><span>Social-media posts</span><small>Reddit and Twitter, with a roughly balanced depressed / not-depressed split.</small></div>
+<div class="card stat"><b>70 / 15 / 15</b><span>Stratified data split</span><small>17,201 training, 3,686 validation and 3,687 test posts.</small></div>
+<div class="card stat"><b>20</b><span>LIWC clinical features</span><small>Negative emotion, first-person focus, absolutist words, past-tense use and more.</small></div>
+<div class="card stat"><b>4</b><span>Severity levels</span><small>Not Depressed, Mild, Moderate and Severe, in a PHQ-9 style for counselor triage.</small></div>
+</div>
+
+<h2>Try it</h2>
+<div class="card">
+<textarea id="t" placeholder="Type or paste a sample post…"></textarea>
+<div>
+<button id="go">Analyze</button>
+<button class="alt" data-s="I don't see the point anymore. I'm always tired, always alone. Nothing ever gets better and I felt like this for months.">Example: severe cues</button>
+<button class="alt" data-s="I was kind of down this week, felt tired after exams but my friends and I are planning something fun.">Example: mild cues</button>
+<button class="alt" data-s="Had a great weekend with my family, we went hiking and I loved it. Excited for next week!">Example: no cues</button>
+</div>
+<div id="out" style="display:none;margin-top:14px">
+<span id="badge" class="badge"></span>
+<p id="hl" style="margin:12px 0"></p>
+<div id="cues"></div>
+<div class="alert" id="al"><b>Safety notice:</b> death-related language detected. A trained person should review this promptly. India: Tele-MANAS 14416 · Emergency 112.</div>
+</div>
+<p class="note">Demo mode: this page runs the psycholinguistic-cue stage of the model in your browser (LIWC-style word lists and the distress score). Full MentalBERT scoring and LIME explanations run in the model notebooks; their results are shown below. No text leaves your device.</p>
+</div>
+
+<h2>How it works</h2>
+<div class="card steps"><div>Post text</div>→<div>MentalBERT (768-d)</div>+<div>20 LIWC features</div>→<div>Attention Gate</div>→<div>BiLSTM</div>→<div>PHQ-9 severity</div>→<div>LIME words</div></div>
+
+<h2>Model performance</h2>
+<div class="card scroll"><table>
+<tr><th>Model</th><th>Accuracy</th><th>F1</th><th>AUC-ROC</th></tr>
+<tr><td>M1 TF-IDF + LogReg</td><td>0.7795</td><td>0.7793</td><td>0.8676</td></tr>
+<tr><td>M2 BERT-base</td><td>0.8221</td><td>0.8220</td><td>0.9156</td></tr>
+<tr><td>M3 MentalBERT</td><td>0.8194</td><td>0.8190</td><td>0.9171</td></tr>
+<tr><td>M4 MentalBERT + LIWC</td><td>0.8245</td><td>0.8244</td><td>0.9181</td></tr>
+<tr><td><b>M5 Full (gate + BiLSTM)</b></td><td><b>0.8218</b></td><td><b>0.8218</b></td><td><b>0.9137</b></td></tr>
+</table></div>
+<div class="row">
+<div class="card"><b>Cross-platform</b><p class="note">Reddit-only → Twitter (zero-shot) F1 0.5466. Mixed training: Twitter 0.7686, Reddit 0.9437.</p></div>
+<div class="card"><b>Severity on test set</b><p class="note">Not Depressed 50.5% · Mild 2.3% · Moderate 31.7% · Severe 15.6%</p></div>
+</div>
+
+<h2>Limitations</h2>
+<div class="card note">Screening support only. Severity weights are heuristic, not clinically validated. User ages could not be confirmed across all posts. Use only with consent and human review.</div>
+</main>
+<script>
+const W={first:["i","me","my","myself","im","i'm","i've","i'd"],cert:["always","never","nothing","everyone","nobody","everything","forever"],neg:["tired","alone","hopeless","empty","worthless","numb","sad","down","hate","lonely","hurt","cry","anxious","worse"],death:["die","dead","death","suicide","kill","disappear","end it","no point","don't see the point"],pos:["happy","great","fun","love","loved","excited","good","amazing","enjoy"]};
+const C={first:"#2563eb",cert:"#ea580c",neg:"#dc2626",death:"#9d174d",pos:"#059669"};
+const L={first:"First-person",cert:"Absolutist",neg:"Negative emotion",death:"Death-related",pos:"Positive emotion"};
+const $=id=>document.getElementById(id);
+function run(){
+ const raw=$("t").value.trim();if(!raw)return;
+ const low=raw.toLowerCase(),toks=low.match(/[a-z']+/g)||[],n=Math.max(toks.length,1);
+ const cnt={first:0,cert:0,neg:0,death:0,pos:0};
+ toks.forEach(w=>{for(const k of["first","cert","neg","pos"])if(W[k].includes(w))cnt[k]++});
+ W.death.forEach(p=>{if(low.includes(p))cnt.death++});
+ const r=k=>cnt[k]/n;
+ const distress=3*r("neg")+1.5*r("first")+2*r("cert")+4*r("death")-2*r("pos");
+ const s=Math.min(Math.max(2*distress,0),1);
+ let lab="Not Depressed",col="var(--g)";
+ if(s>=.75||cnt.death){lab="Severe cues";col="var(--r)"}else if(s>=.35){lab="Moderate cues";col="var(--o)"}else if(s>=.15){lab="Mild cues";col="var(--y)"}
+ $("badge").textContent=lab+" · distress "+s.toFixed(2);$("badge").style.background=col;
+ $("hl").innerHTML=raw.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])).replace(/[A-Za-z']+/g,w=>{const l=w.toLowerCase();for(const k of["death","neg","cert","pos","first"])if(W[k].includes(l))return`<mark title="${L[k]}" style="border-bottom:2px solid ${C[k]}">${w}</mark>`;return w});
+ $("cues").innerHTML=Object.keys(cnt).map(k=>`<div class="cue"><span>${L[k]}</span><span>${cnt[k]}</span></div><div class="bar"><i style="width:${Math.min(100,cnt[k]/n*400)}%;background:${C[k]}"></i></div>`).join("");
+ $("al").style.display=cnt.death?"block":"none";$("out").style.display="block";
+}
+$("go").onclick=run;
+document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{$("t").value=b.dataset.s;run()});
+</script></body></html>
