@@ -56,7 +56,7 @@ Try the three built-in examples (severe cues, mild cues, no cues) or paste your 
 
 ```
 mindsignal/
-├── index.html          # Web demo (GitHub Pages)
+├── MindSignal_Demo.html          # Web demo (GitHub Pages)
 ├── notebooks/          # Data prep, model training, evaluation, explainability
 ├── docs/               # Concept note and final presentation
 ├── requirements.txt
@@ -68,7 +68,7 @@ mindsignal/
 
 **Web demo**
 
-Open `index.html` in any modern browser, or enable GitHub Pages (Settings → Pages → Deploy from branch → `main` / root).
+Open `MindSignal_Demo.html` in any modern browser, or enable GitHub Pages (Settings → Pages → Deploy from branch → `main` / root).
 
 **Notebooks**
 
