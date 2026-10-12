@@ -56,10 +56,11 @@ Try the three built-in examples (severe cues, mild cues, no cues) or paste your 
 
 ```
 mindsignal/
-├── MindSignal_Demo.html          # Web demo (GitHub Pages)
-├── notebooks/          # Data prep, model training, evaluation, explainability
-├── docs/               # Concept note and final presentation
-├── requirements.txt
+├── MindSignal_Demo.html            # Web demo (GitHub Pages)
+├── Notebook_1.ipynb                # Data preparation and exploration
+├── Notebook_2.ipynb                # Model training and evaluation
+├── Notebook_3.ipynb                # Results, ablation and explainability
+├── MindSignal_Concept_Note.docx    # Concept note (Why, What, Whom, SDGs)
 ├── LICENSE
 └── README.md
 ```
